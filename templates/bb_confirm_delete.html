@@ -1,0 +1,27 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>⚠️ Удалить объявление?</h2>
+
+    <p><b>{{ bb.title }}</b></p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" class="btn delete">
+             Да, удалить
+        </button>
+
+        <a href="{% url 'bb_detail' bb.id %}" class="btn">
+            ← Отмена
+        </a>
+    </form>
+
+</div>
+
+{% endblock %}

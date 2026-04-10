@@ -1,0 +1,28 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+
+<div class="card">
+    <h2> Выборка колонок (title / price)</h2>
+</div>
+
+<div class="card">
+
+    <table class="styled-table">
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+
+        {% for bb in bbs %}
+        <tr>
+            <td>{{ bb.title }}</td>
+            <td>{{ bb.price }} ₽</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

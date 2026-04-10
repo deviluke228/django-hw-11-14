@@ -1,0 +1,21 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+
+<div class="card">
+    <h2> Пользователи</h2>
+</div>
+
+<div class="card">
+
+    {% for user in users %}
+        <p>
+            <a href="{% url 'user_detail' user.id %}">
+                {{ user.username }}
+            </a>
+        </p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

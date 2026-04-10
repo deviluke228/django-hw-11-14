@@ -1,0 +1,27 @@
+{% extends "layout/basic.html" %}
+
+{% block content %}
+
+<div class="form-wrapper">
+    <div class="form-card">
+
+        <h2>🍦 Добавить мороженое</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn primary">
+                Сохранить
+            </button>
+        </form>
+
+        <br>
+
+
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

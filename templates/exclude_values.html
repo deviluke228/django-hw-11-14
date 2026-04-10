@@ -1,0 +1,51 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Django Tags Demo{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Теги и Фильтры</h2>
+</div>
+
+<div class="cards-grid">
+
+    {% for bb in bbs %}
+
+    <div class="card">
+
+        <h3>{{ bb.title|upper }}</h3>
+
+        <p> {{ bb.content|default:"Нет описания" }}</p>
+
+        <p> {{ bb.content|truncatewords:8 }}</p>
+
+        <p> {{ bb.price|default:"0" }} ₽</p>
+
+        <p> {{ bb.published|date:"d.m.Y H:i" }}</p>
+
+        <p> Длина текста: {{ bb.content|length }}</p>
+
+        <p> {{ bb.rubric.name|lower }}</p>
+
+        <!-- TAGS -->
+        <p>
+            {% if bb.price > 1000 %}
+                 Дорого
+            {% else %}
+                 Дешево
+            {% endif %}
+        </p>
+
+        <!-- CYCLE TAG -->
+        <p>
+            {% cycle "🔵" "🟢" "🟣" %}
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

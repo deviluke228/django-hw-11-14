@@ -1,0 +1,31 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+
+<div class="form-wrapper">
+
+    <div class="form-card">
+
+        <h2>⚠ Удалить мороженое?</h2>
+
+        <p><b>{{ object.name }}</b></p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit" class="btn delete">
+                Да, удалить
+            </button>
+
+            <a href="{% url 'icecream_list' %}" class="btn">
+                Отмена
+            </a>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

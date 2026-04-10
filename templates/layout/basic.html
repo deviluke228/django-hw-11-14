@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная{% endblock %} :: Доска объявлений</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        Объявления
+    </div>
+
+    <nav class="topnav">
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'add' %}">Добавить</a>
+        <a href="{% url 'select_columns' %}">Выборка</a>
+        <a href="{% url 'exclude_values' %}">Фильтр</a>
+        <a href="{% url 'icecream_list' %}"> Мороженое</a>
+        <a href="{% url 'users_list' %}">Пользователи</a>
+
+    </nav>
+
+</header>
+
+
+<section class="content">
+
+    {% if rubrics %}
+<div class="card">
+
+    <button class="cat-btn" onclick="toggleCategories()">
+        Категории
+    </button>
+
+    <div id="categories" class="categories hidden">
+
+        {% for rubric in rubrics %}
+            <a class="rubric-link" href="{% url 'by_rubric' rubric.pk %}">
+                {{ rubric.name }} ({{ rubric.cnt }})
+            </a>
+        {% endfor %}
+
+    </div>
+
+</div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+</section>
+
+<script>
+function toggleCategories() {
+    const block = document.getElementById("categories");
+    block.classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>
+</script>

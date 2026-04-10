@@ -1,0 +1,30 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Добавление объявления{% endblock %}
+
+{% block content %}
+
+<div class="form-wrapper">
+
+    <div class="form-card">
+
+        <h2> Добавление объявления</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-fields">
+                {{ form.as_p }}
+            </div>
+
+            <button type="submit" class="btn primary">
+                Добавить
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

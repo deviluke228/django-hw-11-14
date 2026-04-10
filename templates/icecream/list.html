@@ -1,0 +1,44 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Каталог мороженого{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2 class="page-title">🍦 Каталог мороженого</h2>
+
+    <a href="{% url 'icecream_add' %}" class="btn primary">
+        ➕ Добавить мороженое
+    </a>
+</div>
+
+<div class="cards-grid">
+
+    {% for ice in icecreams %}
+        <div class="card">
+
+            <h3>🍦 {{ ice.name }}</h3>
+
+            <p>Вкус: {{ ice.flavor }}</p>
+            <p><b>{{ ice.price }} ₽</b></p>
+
+            <div class="actions">
+
+                <a href="{% url 'icecream_edit' ice.id %}" class="btn">
+                    ✏ Редактировать
+                </a>
+
+                <a href="{% url 'icecream_delete' ice.id %}" class="btn delete">
+                    🗑 Удалить
+                </a>
+
+            </div>
+
+        </div>
+    {% empty %}
+        <p>Пока нет мороженого</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+<h2>Все объявления</h2>
+
+<div class="rubric-list">
+
+    {% for bb in page_obj %}
+
+        <div class="bb-card">
+
+            <h3>
+                <a href="{% url 'bb_detail' bb.id %}">
+                    {{ bb.title_and_price }}
+                </a>
+            </h3>
+
+            <p>{{ bb.content|truncatewords:15 }}</p>
+
+            <small>
+                 {{ bb.price }} ₽ |
+                 {{ bb.rubric.name }}
+            </small>
+
+        </div>
+
+    {% empty %}
+        <p>Объявлений нет</p>
+    {% endfor %}
+
+</div>
+
+<div class="pagination">
+
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">← Назад</a>
+    {% endif %}
+
+    <span>
+        Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Вперёд →</a>
+    {% endif %}
+
+</div>
+
+{% endblock %}
